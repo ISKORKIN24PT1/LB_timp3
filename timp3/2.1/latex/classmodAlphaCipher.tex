@@ -1,0 +1,127 @@
+\hypertarget{classmodAlphaCipher}{}\doxysection{Класс mod\+Alpha\+Cipher}
+\label{classmodAlphaCipher}\index{modAlphaCipher@{modAlphaCipher}}
+
+
+Класс для шифрования методом Гронсфельда  
+
+
+
+
+{\ttfamily \#include $<$mod\+Alpha\+Cipher.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodAlphaCipher_a4f0a86c20f5d836f66cb1e640d875e6b}{mod\+Alpha\+Cipher}} ()=delete
+\begin{DoxyCompactList}\small\item\em Удаленный конструктор по умолчанию \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodAlphaCipher_a314fca132f4e74faca280b7c1fad7cb5}{mod\+Alpha\+Cipher}} (const std\+::wstring \&skey)
+\begin{DoxyCompactList}\small\item\em Конструктор с параметром ключа \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{classmodAlphaCipher_a5edc499881373a275a3cd14f0cab6c19}{encrypt}} (const std\+::wstring \&open\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Шифрование открытого текста \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{classmodAlphaCipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}{decrypt}} (const std\+::wstring \&cipher\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Дешифрование зашифрованного текста \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для шифрования методом Гронсфельда 
+
+Реализует шифрование и дешифрование текста на русском языке 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classmodAlphaCipher_a4f0a86c20f5d836f66cb1e640d875e6b}\label{classmodAlphaCipher_a4f0a86c20f5d836f66cb1e640d875e6b}} 
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{modAlphaCipher()}{modAlphaCipher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily mod\+Alpha\+Cipher\+::mod\+Alpha\+Cipher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Удаленный конструктор по умолчанию 
+
+Запрещено создание объекта без ключа \mbox{\Hypertarget{classmodAlphaCipher_a314fca132f4e74faca280b7c1fad7cb5}\label{classmodAlphaCipher_a314fca132f4e74faca280b7c1fad7cb5}} 
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{modAlphaCipher()}{modAlphaCipher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily mod\+Alpha\+Cipher\+::mod\+Alpha\+Cipher (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{skey }\end{DoxyParamCaption})}
+
+
+
+Конструктор с параметром ключа 
+
+$<$ Для wide character функций
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em skey} & Ключ шифрования \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если ключ невалиден\\
+\hline
+\end{DoxyExceptions}
+Конструктор класса \mbox{\hyperlink{classmodAlphaCipher}{mod\+Alpha\+Cipher}} 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em skey} & Ключ шифрования \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если ключ невалиден\\
+\hline
+\end{DoxyExceptions}
+Инициализирует алфавит и преобразует ключ в числовой вектор 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classmodAlphaCipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}\label{classmodAlphaCipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}} 
+\index{modAlphaCipher@{modAlphaCipher}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{decrypt()}{decrypt()}}
+{\footnotesize\ttfamily std\+::wstring mod\+Alpha\+Cipher\+::decrypt (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{cipher\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+Дешифрование зашифрованного текста 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em cipher\+\_\+text} & Зашифрованный текст для дешифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Расшифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если текст невалиден \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classmodAlphaCipher_a5edc499881373a275a3cd14f0cab6c19}\label{classmodAlphaCipher_a5edc499881373a275a3cd14f0cab6c19}} 
+\index{modAlphaCipher@{modAlphaCipher}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily std\+::wstring mod\+Alpha\+Cipher\+::encrypt (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{open\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+Шифрование открытого текста 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em open\+\_\+text} & Открытый текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если текст невалиден \\
+\hline
+\end{DoxyExceptions}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{modAlphaCipher_8h}{mod\+Alpha\+Cipher.\+h}}\item 
+\mbox{\hyperlink{modAlphaCipher_8cpp}{mod\+Alpha\+Cipher.\+cpp}}\end{DoxyCompactItemize}

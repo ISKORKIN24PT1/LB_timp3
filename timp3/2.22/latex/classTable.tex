@@ -1,0 +1,103 @@
+\hypertarget{classTable}{}\doxysection{Класс Table}
+\label{classTable}\index{Table@{Table}}
+
+
+Класс для шифрования методом табличной маршрутной перестановки  
+
+
+
+
+{\ttfamily \#include $<$mod\+Table\+Cipher.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}{Table}} (int key)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classTable}{Table}}. \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{classTable_a7202cc433f0abad38c26b14635811374}{encrypt}} (const std\+::wstring \&plain)
+\begin{DoxyCompactList}\small\item\em Шифрование открытого текста \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{classTable_ac723dbbcef20b4f381a2ca0bd21f6e61}{decrypt}} (const std\+::wstring \&cipher)
+\begin{DoxyCompactList}\small\item\em Дешифрование зашифрованного текста \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для шифрования методом табличной маршрутной перестановки 
+
+Реализует шифрование и дешифрование текста на русском языке 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}\label{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}} 
+\index{Table@{Table}!Table@{Table}}
+\index{Table@{Table}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{Table()}{Table()}}
+{\footnotesize\ttfamily Table\+::\+Table (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \mbox{\hyperlink{classTable}{Table}}. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em key} & Ключ шифрования (количество столбцов) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если ключ невалиден \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classTable_ac723dbbcef20b4f381a2ca0bd21f6e61}\label{classTable_ac723dbbcef20b4f381a2ca0bd21f6e61}} 
+\index{Table@{Table}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{decrypt()}{decrypt()}}
+{\footnotesize\ttfamily std\+::wstring Table\+::decrypt (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{cipher }\end{DoxyParamCaption})}
+
+
+
+Дешифрование зашифрованного текста 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em cipher} & Зашифрованный текст для дешифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Расшифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если текст невалиден \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classTable_a7202cc433f0abad38c26b14635811374}\label{classTable_a7202cc433f0abad38c26b14635811374}} 
+\index{Table@{Table}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily std\+::wstring Table\+::encrypt (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{plain }\end{DoxyParamCaption})}
+
+
+
+Шифрование открытого текста 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em plain} & Открытый текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & Если текст невалиден \\
+\hline
+\end{DoxyExceptions}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{modTableCipher_8h}{mod\+Table\+Cipher.\+h}}\item 
+\mbox{\hyperlink{modTableCipher_8cpp}{mod\+Table\+Cipher.\+cpp}}\end{DoxyCompactItemize}

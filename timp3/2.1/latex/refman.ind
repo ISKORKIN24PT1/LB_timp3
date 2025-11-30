@@ -1,0 +1,43 @@
+\begin{theindex}
+
+  \item {$\sim$KeyV\_fixture}
+    \subitem {KeyV\_fixture}, \hyperpage{9}
+
+  \indexspace
+
+  \item {check}
+    \subitem {main.cpp}, \hyperpage{14}
+  \item {cipher\_error}, \hyperpage{7}
+    \subitem {cipher\_error}, \hyperpage{8}
+
+  \indexspace
+
+  \item {decrypt}
+    \subitem {modAlphaCipher}, \hyperpage{11}
+
+  \indexspace
+
+  \item {encrypt}
+    \subitem {modAlphaCipher}, \hyperpage{11}
+
+  \indexspace
+
+  \item {KeyV\_fixture}, \hyperpage{9}
+    \subitem {$\sim$KeyV\_fixture}, \hyperpage{9}
+    \subitem {KeyV\_fixture}, \hyperpage{9}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{14}
+  \item {main.cpp}, \hyperpage{13}
+    \subitem {check}, \hyperpage{14}
+    \subitem {main}, \hyperpage{14}
+  \item {modAlphaCipher}, \hyperpage{10}
+    \subitem {decrypt}, \hyperpage{11}
+    \subitem {encrypt}, \hyperpage{11}
+    \subitem {modAlphaCipher}, \hyperpage{10}
+  \item {modAlphaCipher.cpp}, \hyperpage{15}
+  \item {modAlphaCipher.h}, \hyperpage{16}
+
+\end{theindex}

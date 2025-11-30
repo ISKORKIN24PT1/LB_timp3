@@ -1,3 +1,11 @@
+/**
+ * @file UnitTest.cpp
+ * @brief Модульные тесты для класса Table
+ * @details Содержит тестовые сценарии для проверки табличной маршрутной перестановки
+ * @author Искоркин Андрей
+ * @version 1.0
+ * @date 30.11.2025
+ */
 
 #include <UnitTest++/UnitTest++.h>
 #include <string>
@@ -7,200 +15,286 @@
 
 using namespace std;
 
-// Функции для преобразования широких строк в UTF-8
+/**
+ * @brief Преобразование wide string в UTF-8 string
+ * @param [in] ws Строка в формате wstring
+ * @return Строка в формате UTF-8
+ */
 string wideToUtf8(const wstring& ws) {
     wstring_convert<codecvt_utf8<wchar_t>> conv;
     return conv.to_bytes(ws);
 }
 
+/**
+ * @brief Преобразование UTF-8 string в wide string
+ * @param [in] s Строка в формате UTF-8
+ * @return Строка в формате wstring
+ */
 wstring utf8ToWide(const string& s) {
     wstring_convert<codecvt_utf8<wchar_t>> conv;
     return conv.from_bytes(s);
 }
 
-// Макрос для сравнения широких строк
+/**
+ * @brief Макрос для сравнения wide string в тестах
+ */
 #define CHECK_WIDE_EQUAL(expected, actual) \
     CHECK_EQUAL(wideToUtf8(expected), wideToUtf8(actual))
 
-// ===== ТАБЛИЦА 1: ТЕСТИРОВАНИЕ КОНСТРУКТОРА =====
+/**
+ * @brief Test Suite для тестирования конструктора
+ */
 SUITE(ConstructorTest)
 {
-    // 1.1 Верный ключ
+    /**
+     * @brief Тест валидного ключа
+     */
     TEST(ValidKey) {
         Table cipher(3);
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher.encrypt(L"ПРИВЕТМИР"));
     }
     
-    // 1.2 Ключ длиннее сообщения
+    /**
+     * @brief Тест длинного ключа
+     */
     TEST(LongKey) {
         Table cipher(10);
         CHECK_WIDE_EQUAL(L"ТЕВИРП", cipher.encrypt(L"ПРИВЕТ"));
     }
-    
-    // 1.3 Ключ равен длине сообщения
+
+    /**
+     * @brief Тест ключа равного длине сообщения
+     */
     TEST(KeyEqualsMessageLength) {
         Table cipher(9);
         CHECK_WIDE_EQUAL(L"РИМТЕВИРП", cipher.encrypt(L"ПРИВЕТМИР"));
     }
     
-    // 1.4 Отрицательный ключ
+    /**
+     * @brief Тест отрицательного ключа
+     */
     TEST(NegativeKey) {
         CHECK_THROW(Table cipher(-3), cipher_error);
     }
-    
-    // 1.5 Нулевой ключ
+
+    /**
+     * @brief Тест нулевого ключа
+     */
     TEST(ZeroKey) {
         CHECK_THROW(Table cipher(0), cipher_error);
     }
 }
 
-// Фикстура для ключа 3
+/**
+ * @brief Фикстура для тестов с ключом 3
+ */
 struct Key3Fixture {
     Table* cipher;
     
+    /**
+     * @brief Конструктор фикстуры
+     */
     Key3Fixture() {
         cipher = new Table(3);
     }
     
+    /**
+     * @brief Деструктор фикстуры
+     */
     ~Key3Fixture() {
         delete cipher;
     }
 };
 
-// Фикстура для ключа 1
+/**
+ * @brief Фикстура для тестов с ключом 1
+ */
 struct Key1Fixture {
     Table* cipher;
     
+    /**
+     * @brief Конструктор фикстуры
+     */
     Key1Fixture() {
         cipher = new Table(1);
     }
     
+    /**
+     * @brief Деструктор фикстуры
+     */
     ~Key1Fixture() {
         delete cipher;
     }
 };
 
-// ===== ТАБЛИЦА 2: ТЕСТИРОВАНИЕ МЕТОДА ENCRYPT =====
+/**
+ * @brief Test Suite для тестирования шифрования
+ */
 SUITE(EncryptTest)
 {
-    // 2.1 Строка из прописных
+    /**
+     * @brief Тест шифрования строки в верхнем регистре
+     */
     TEST_FIXTURE(Key3Fixture, UpperCaseString) {
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher->encrypt(L"ПРИВЕТМИР"));
     }
     
-    // 2.2 Есть строчные
+    /**
+     * @brief Тест шифрования строки в нижнем регистре
+     */
     TEST_FIXTURE(Key3Fixture, LowerCaseString) {
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher->encrypt(L"приветмир"));
     }
-    
-    // 2.3 Есть пробелы
+
+    /**
+     * @brief Тест шифрования строки с пробелами
+     */
     TEST_FIXTURE(Key3Fixture, StringWithWhitespace) {
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher->encrypt(L"ПРИВЕТ МИР"));
     }
     
-    // 2.4 Есть цифры
+    /**
+     * @brief Тест шифрования строки с цифрами
+     */
     TEST_FIXTURE(Key3Fixture, StringWithNumbers) {
         CHECK_WIDE_EQUAL(L"ИТРЕПВ", cipher->encrypt(L"ПРИВЕТ2024"));
     }
-    
-    // 2.5 Нет букв
+
+    /**
+     * @brief Тест шифрования строки без букв
+     */
     TEST_FIXTURE(Key3Fixture, NoLetters) {
         CHECK_THROW(cipher->encrypt(L"1234"), cipher_error);
     }
     
-    // 2.6 Пустой текст
+    /**
+     * @brief Тест шифрования пустой строки
+     */
     TEST_FIXTURE(Key3Fixture, EmptyString) {
         CHECK_THROW(cipher->encrypt(L""), cipher_error);
     }
     
-    // 2.7 Ключ=1
+    /**
+     * @brief Тест шифрования с ключом 1
+     */
     TEST_FIXTURE(Key1Fixture, KeyEqualsOne) {
         CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher->encrypt(L"ПРИВЕТМИР"));
     }
-    
-    // 2.8 Есть знаки препинания
+
+    /**
+     * @brief Тест шифрования строки с пунктуацией
+     */
     TEST_FIXTURE(Key3Fixture, StringWithPunctuation) {
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher->encrypt(L"ПРИВЕТ, МИР"));
     }
     
-    // 2.9 Тест на некратный ключ
+    /**
+     * @brief Тест шифрования с ключом не кратным длине текста
+     */
     TEST(NonMultipleKey) {
         Table cipher(4);
-        wstring original = L"АБВГД"; // 5 символов, ключ 4
+        wstring original = L"АБВГД";
         wstring encrypted = cipher.encrypt(original);
         wstring decrypted = cipher.decrypt(encrypted);
         CHECK_WIDE_EQUAL(original, decrypted);
     }
-    
-    // 2.10 Тест с коротким текстом
+
+    /**
+     * @brief Тест шифрования короткого текста
+     */
     TEST(ShortText) {
         Table cipher(3);
         CHECK_WIDE_EQUAL(L"А", cipher.encrypt(L"А"));
     }
 }
 
-// ===== ТАБЛИЦА 3: ТЕСТИРОВАНИЕ МЕТОДА DECRYPT =====
+/**
+ * @brief Test Suite для тестирования дешифрования
+ */
 SUITE(DecryptTest)
 {
-    // 3.1 Строка из прописных
+    /**
+     * @brief Тест дешифрования строки в верхнем регистре
+     */
     TEST_FIXTURE(Key3Fixture, UpperCaseString) {
         CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher->decrypt(L"ИТРРЕИПВМ"));
     }
-    
-    // 3.2 Есть строчные
+
+    /**
+     * @brief Тест дешифрования строки с строчными буквами
+     */
     TEST_FIXTURE(Key3Fixture, LowerCaseString) {
         CHECK_THROW(cipher->decrypt(L"итереиПВМ"), cipher_error);
     }
-    
-    // 3.3 Есть пробелы
+
+    /**
+     * @brief Тест дешифрования строки с пробелами
+     */
     TEST_FIXTURE(Key3Fixture, WhitespaceString) {
         CHECK_THROW(cipher->decrypt(L"ИТР РЕИ ПВМ"), cipher_error);
     }
-    
-    // 3.4 Есть цифры
+
+    /**
+     * @brief Тест дешифрования строки с цифрами
+     */
     TEST_FIXTURE(Key3Fixture, DigitsString) {
         CHECK_THROW(cipher->decrypt(L"ИТРЕПВ2024"), cipher_error);
     }
-    
-    // 3.5 Нет букв
+
+    /**
+     * @brief Тест дешифрования строки без букв
+     */
     TEST_FIXTURE(Key3Fixture, NoLettersDecrypt) {
         CHECK_THROW(cipher->decrypt(L"1234"), cipher_error);
     }
-    
-    // 3.6 Пустой текст
+
+    /**
+     * @brief Тест дешифрования пустой строки
+     */
     TEST_FIXTURE(Key3Fixture, EmptyStringDecrypt) {
         CHECK_THROW(cipher->decrypt(L""), cipher_error);
     }
-    
-    // 3.7 Ключ=1
+
+    /**
+     * @brief Тест дешифрования с ключом 1
+     */
     TEST_FIXTURE(Key1Fixture, KeyEqualsOneDecrypt) {
         CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher->decrypt(L"ПРИВЕТМИР"));
     }
-    
-    // 3.8 Есть знаки препинания
+
+    /**
+     * @brief Тест дешифрования валидного шифротекста
+     */
     TEST_FIXTURE(Key3Fixture, ValidCipherText) {
         CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher->decrypt(L"ИТРРЕИПВМ"));
     }
-    
-    // 3.9 Тест на короткую строку
+
+    /**
+     * @brief Тест дешифрования короткой строки
+     */
     TEST(ShortString) {
         Table cipher(5);
-        wstring original = L"А"; // 1 символ, ключ 5
+        wstring original = L"А";
         wstring encrypted = cipher.encrypt(original);
         wstring decrypted = cipher.decrypt(encrypted);
         CHECK_WIDE_EQUAL(original, decrypted);
     }
-    
-    // 3.10 Тест с коротким шифротекстом
+
+    /**
+     * @brief Тест дешифрования короткого шифротекста
+     */
     TEST(ShortCipherText) {
         Table cipher(3);
         CHECK_WIDE_EQUAL(L"А", cipher.decrypt(L"А"));
     }
 }
 
+/**
+ * @brief Главная функция запуска тестов
+ * @return Код завершения тестирования
+ */
 int main(int argc, char** argv)
 {
     locale::global(locale(""));
     return UnitTest::RunAllTests();
 }
-

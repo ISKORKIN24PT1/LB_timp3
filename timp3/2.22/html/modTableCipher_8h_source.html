@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Шифрование методом маршрутной перестановки: Исходный файл modTableCipher.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Шифрование методом маршрутной перестановки
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">modTableCipher.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="modTableCipher_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classcipher__error.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcipher__error.html">cipher_error</a>: <span class="keyword">public</span> std::invalid_argument {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classcipher__error.html#aac662e216a84bfeb873303c7b88d029e">   25</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classcipher__error.html#aac662e216a84bfeb873303c7b88d029e">cipher_error</a> (<span class="keyword">const</span> std::string&amp; what_arg):</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::invalid_argument(what_arg) {}</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classcipher__error.html#a18cf27d9c2cd2538d3cb8f17e9a55f3e">   31</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classcipher__error.html#a18cf27d9c2cd2538d3cb8f17e9a55f3e">cipher_error</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* what_arg):</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::invalid_argument(what_arg) {}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classTable.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTable.html">Table</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> cols; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">int</span> getValidKey(<span class="keyword">const</span> <span class="keywordtype">int</span> key);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::wstring getValidOpenText(<span class="keyword">const</span> std::wstring&amp; s);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::wstring getValidCipherText(<span class="keyword">const</span> std::wstring&amp; s);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classTable.html#a4cd90c67c976b6b5d6c96a7ffbfc563f">Table</a>(<span class="keywordtype">int</span> key);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::wstring <a class="code" href="classTable.html#a7202cc433f0abad38c26b14635811374">encrypt</a>(<span class="keyword">const</span> std::wstring&amp; plain);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::wstring <a class="code" href="classTable.html#ac723dbbcef20b4f381a2ca0bd21f6e61">decrypt</a>(<span class="keyword">const</span> std::wstring&amp; cipher);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="ttc" id="aclassTable_html"><div class="ttname"><a href="classTable.html">Table</a></div><div class="ttdoc">Класс для шифрования методом табличной маршрутной перестановки</div><div class="ttdef"><b>Definition:</b> modTableCipher.h:40</div></div>
+<div class="ttc" id="aclassTable_html_a4cd90c67c976b6b5d6c96a7ffbfc563f"><div class="ttname"><a href="classTable.html#a4cd90c67c976b6b5d6c96a7ffbfc563f">Table::Table</a></div><div class="ttdeci">Table(int key)</div><div class="ttdoc">Конструктор класса Table.</div><div class="ttdef"><b>Definition:</b> modTableCipher.cpp:85</div></div>
+<div class="ttc" id="aclassTable_html_a7202cc433f0abad38c26b14635811374"><div class="ttname"><a href="classTable.html#a7202cc433f0abad38c26b14635811374">Table::encrypt</a></div><div class="ttdeci">std::wstring encrypt(const std::wstring &amp;plain)</div><div class="ttdoc">Шифрование открытого текста</div><div class="ttdef"><b>Definition:</b> modTableCipher.cpp:96</div></div>
+<div class="ttc" id="aclassTable_html_ac723dbbcef20b4f381a2ca0bd21f6e61"><div class="ttname"><a href="classTable.html#ac723dbbcef20b4f381a2ca0bd21f6e61">Table::decrypt</a></div><div class="ttdeci">std::wstring decrypt(const std::wstring &amp;cipher)</div><div class="ttdoc">Дешифрование зашифрованного текста</div><div class="ttdef"><b>Definition:</b> modTableCipher.cpp:133</div></div>
+<div class="ttc" id="aclasscipher__error_html"><div class="ttname"><a href="classcipher__error.html">cipher_error</a></div><div class="ttdoc">Класс исключений для ошибок шифрования</div><div class="ttdef"><b>Definition:</b> modTableCipher.h:19</div></div>
+<div class="ttc" id="aclasscipher__error_html_a18cf27d9c2cd2538d3cb8f17e9a55f3e"><div class="ttname"><a href="classcipher__error.html#a18cf27d9c2cd2538d3cb8f17e9a55f3e">cipher_error::cipher_error</a></div><div class="ttdeci">cipher_error(const char *what_arg)</div><div class="ttdoc">Конструктор с C-строкой</div><div class="ttdef"><b>Definition:</b> modTableCipher.h:31</div></div>
+<div class="ttc" id="aclasscipher__error_html_aac662e216a84bfeb873303c7b88d029e"><div class="ttname"><a href="classcipher__error.html#aac662e216a84bfeb873303c7b88d029e">cipher_error::cipher_error</a></div><div class="ttdeci">cipher_error(const std::string &amp;what_arg)</div><div class="ttdoc">Конструктор с строковым параметром</div><div class="ttdef"><b>Definition:</b> modTableCipher.h:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

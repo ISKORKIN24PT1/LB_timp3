@@ -1,0 +1,4 @@
+<map id="Key1Fixture" name="Key1Fixture">
+<area shape="rect" id="node1" title="Фикстура для тестов с ключом 1." alt="" coords="5,95,104,121"/>
+<area shape="rect" id="node2" href="$classTable.html" title="Класс для шифрования методом табличной маршрутной перестановки" alt="" coords="27,5,83,32"/>
+</map>

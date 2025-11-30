@@ -1,0 +1,5 @@
+<map id="modTableCipher.h" name="modTableCipher.h">
+<area shape="rect" id="node1" title="Заголовочный файл для класса Table." alt="" coords="48,5,187,32"/>
+<area shape="rect" id="node2" href="$main_8cpp.html" title="Главный модуль для тестирования табличной маршрутной перестановки" alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node3" href="$modTableCipher_8cpp.html" title="Реализация класса Table для табличной маршрутной перестановки" alt="" coords="113,80,266,107"/>
+</map>
